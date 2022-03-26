@@ -1,3 +1,9 @@
+# lot of work to go on this yet
+# i was slow to come up with a idea to work on
+
+# the general premise is a command line note keeping app intended to be used within vs code
+# python notes.py -n "note text goes here" -t 'tags go here' -d 'subdirectories go here' -o [open in code after]
+
 import datetime
 import argparse
 import os
@@ -133,3 +139,25 @@ if args.n:
                 file.write(",".join(note["tags"]))
 
             file.write("\n")
+
+# list notes
+if args.s:
+
+    while True:
+
+        print("\nSelect option:")
+        print("\t 1) List all notes.")
+        print("\t Q) Quit search.")
+
+        select = input()
+
+        if select not in ["1", "Q"]:
+            continue
+        if select == "Q":
+            break
+
+        if select == "1":
+            print("Date/Organization/Tags")
+            with open(".notes", "r") as file:
+                for note in file:
+                    print(note)
